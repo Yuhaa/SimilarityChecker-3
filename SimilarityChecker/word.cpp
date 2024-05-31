@@ -5,17 +5,12 @@ using namespace std;
 
 class Word {
 public:
-	const int MAX_LENGTH_SCORE = 60;
-
 	void SetTarget(string target1, string target2) {
 		_target1 = target1;
 		_target2 = target2;
 	}
 
 	double CheckLength() {
-		double length1 = _target1.length();
-		double length2 = _target2.length();
-
 		if (IsSameLength())
 			return 60;
 
@@ -26,6 +21,8 @@ public:
 	}
 
 private:
+	const int MAX_LENGTH_SCORE = 60;
+
 	string _target1;
 	string _target2;
 
