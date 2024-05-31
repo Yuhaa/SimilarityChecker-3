@@ -1,4 +1,5 @@
 #include <string>
+#include <cstdlib>
 
 using namespace std;
 
@@ -11,26 +12,31 @@ public:
 		_target2 = target2;
 	}
 
+	bool IsSameLength() {
+		return _target1.length() == _target2.length();
+	}
+
+	bool IsDoubleLength() {
+		return (_target1.length() >= _target2.length() * 2 ||
+			_target2.length() >= _target1.length() * 2);
+	}
+
+	double GetSubScore() {
+		double difference = abs((double)_target1.length() - (double)_target2.length());
+		return (1 - difference / (double)min(_target1.length(), _target2.length())) * MAX_LENGTH_SCORE;
+	}
+
 	double CheckLength() {
 		double length1 = _target1.length();
 		double length2 = _target2.length();
 
-		if (length1 == length2)
+		if (IsSameLength())
 			return 60;
-		if (length1 > length2 &&
-			length1 >= length2 * 2) {
+
+		if (IsDoubleLength())
 			return 0;
-		}
-		if (length1 < length2 &&
-			length1 * 2 <= length2) {
-			return 0;
-		}
-		if (length1 > length2) {
-			return (1 - (length1 - length2) / length2) * MAX_LENGTH_SCORE;
-		}
-		if (length2 > length1) {
-			return (1 - (length2 - length1) / length1) * MAX_LENGTH_SCORE;
-		}
+		
+		return GetSubScore();
 	}
 
 private:

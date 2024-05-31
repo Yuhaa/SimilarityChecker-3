@@ -37,16 +37,14 @@ TEST_F(WordFixture, TwiceLength3) {
 
 TEST_F(WordFixture, DifferentLength1) {
 	word.SetTarget("abcdefg", "abcd");
-	double gap = double(7 - 4) / 4;
-	double res = (1 - gap) * 60;
+	double res = (1 - double(7 - 4) / 4) * 60;
 
 	EXPECT_EQ(res, word.CheckLength());
 }
 
 TEST_F(WordFixture, DifferentLength2) {
 	word.SetTarget("abcd", "abcdefg");
-	double gap = double(7 - 4) / 4;
-	double res = (1 - gap) * 60;
+	double res = (1 - double(7 - 4) / 4) * 60;
 
 	EXPECT_EQ(res, word.CheckLength());
 }
