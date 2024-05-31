@@ -1,6 +1,8 @@
 #include "pch.h"
+#include "../SimilarityChecker/word.cpp"
 
-TEST(TestCaseName, TestName) {
-  EXPECT_EQ(1, 1);
-  EXPECT_TRUE(true);
+TEST(LengthTest, SameLength) {
+	Word word;
+	int res = 60;
+	EXPECT_EQ(60, word.CheckLength());
 }
