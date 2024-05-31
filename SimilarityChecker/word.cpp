@@ -4,16 +4,25 @@ using namespace std;
 
 class Word {
 public:
-	int CheckLength(string target1, string target2) {
-		if (target1.length() == target2.length())
+	void SetTarget(string target1, string target2) {
+		_target1 = target1;
+		_target2 = target2;
+	}
+
+	int CheckLength() {
+		if (_target1.length() == _target2.length())
 			return 60;
-		if (target1.length() > target2.length() &&
-			target1.length() >= target2.length() * 2) {
+		if (_target1.length() > _target2.length() &&
+			_target1.length() >= _target2.length() * 2) {
 			return 0;
 		}
-		if (target1.length() < target2.length() &&
-			target1.length() * 2 <= target2.length()) {
+		if (_target1.length() < _target2.length() &&
+			_target1.length() * 2 <= _target2.length()) {
 			return 0;
 		}
 	}
+
+private:
+	string _target1;
+	string _target2;
 };

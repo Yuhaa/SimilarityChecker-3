@@ -1,38 +1,35 @@
 #include "pch.h"
 #include "../SimilarityChecker/word.cpp"
 
-TEST(LengthTest, SameLength) {
+class WordFixture: public testing::Test {
+public:
 	Word word;
-	string target1{"abcd"};
-	string target2{"abcd"};
+};
+
+TEST_F(WordFixture, SameLength) {
+	word.SetTarget("abcd", "abcd");
 	int res = 60;
 
-	EXPECT_EQ(res, word.CheckLength(target1, target2));
+	EXPECT_EQ(res, word.CheckLength());
 }
 
-TEST(LengthTest, TwiceLength1) {
-	Word word;
-	string target1{ "abcd" };
-	string target2{ "abcdefgh" };
+TEST_F(WordFixture, TwiceLength1) {
+	word.SetTarget("abcd", "abcdefgh");
 	int res = 0;
 
-	EXPECT_EQ(res, word.CheckLength(target1, target2));
+	EXPECT_EQ(res, word.CheckLength());
 }
 
-TEST(LengthTest, TwiceLength2) {
-	Word word;
-	string target1{ "abcdefgh" };
-	string target2{ "abcd" };
+TEST_F(WordFixture, TwiceLength2) {
+	word.SetTarget("abcdefgh", "abcd");
 	int res = 0;
 
-	EXPECT_EQ(res, word.CheckLength(target1, target2));
+	EXPECT_EQ(res, word.CheckLength());
 }
 
-TEST(LengthTest, TwiceLength3) {
-	Word word;
-	string target1{ "abcdefghsdf" };
-	string target2{ "abcd" };
+TEST_F(WordFixture, TwiceLength3) {
+	word.SetTarget("abcdefghsdf", "abcd");
 	int res = 0;
 
-	EXPECT_EQ(res, word.CheckLength(target1, target2));
+	EXPECT_EQ(res, word.CheckLength());
 }
